@@ -27,6 +27,7 @@ public class DataTableSteps {
     LoginPage loginPage = new LoginPage();
     AdminHomePage adminHomePage = new AdminHomePage();
     AddUserPage addUserPage = new AddUserPage();
+    private DataTable dataTable;
 
 
     @DataTableType
@@ -41,25 +42,28 @@ public class DataTableSteps {
         );
     }
 
-        @Given("user should login with invalid valid credentials")
+    @Given("user should login with invalid valid credentials")
     public void user_should_login_with_invalid_valid_credentials() {
-            loginPage.usernameInput.sendKeys(ConfigReader.getProperty("username"));
-            loginPage.passwordInput.sendKeys(ConfigReader.getProperty("password"));
-            loginPage.submitLoginBtn.click();
+        loginPage.usernameInput.sendKeys(ConfigReader.getProperty("username"));
+        loginPage.passwordInput.sendKeys(ConfigReader.getProperty("password"));
+        loginPage.submitLoginBtn.click();
 
     }
+
     @Then("user click on add user button")
     public void user_click_on_add_user_button() {
         adminHomePage.adminAddUserBtn.click();
 
 
     }
+
     @Then("user should land to create new user page")
     public void user_should_land_to_create_new_user_page() {
         Assert.assertEquals(driver.getCurrentUrl(), "https://nuta1bema.talentlms.com/user/create");
 
     }
-//    @Given("create new user with following data")
+
+    //    @Given("create new user with following data")
 //    public void create_new_user_with_following_data(DataTable dataTable) {
 //        List<List<String>> userDetails = dataTable.asLists();
 //
@@ -69,23 +73,35 @@ public class DataTableSteps {
 //
 //    }
     @Given("create new user with following data")
-    public void create_new_user_with_following_data(List<UserDetails> userDetails) {
-        addUserPage.firstNameInput.sendKeys(userDetails.get(3).getFirstname());
-        addUserPage.lastNameInput.sendKeys(userDetails.get(3).getLastname());
-        addUserPage.emailInput.sendKeys(userDetails.get(3).getEmail());
-        addUserPage.usernameInput.sendKeys(userDetails.get(3).getUsername());
-        addUserPage.passwordInput.sendKeys(userDetails.get(3).getPassword());
-        addUserPage.bioDescriptions.sendKeys(userDetails.get(3).getBio());
+    public void create_new_user_with_following_data(DataTable dataTable) {
+//        addUserPage.firstNameInput.sendKeys(userDetails.get(0).getFirstname());
+//        addUserPage.lastNameInput.sendKeys(userDetails.get(0).getLastname());
+//        addUserPage.emailInput.sendKeys(userDetails.get(0).getEmail());
+//        addUserPage.usernameInput.sendKeys(userDetails.get(0).getUsername());
+//        addUserPage.passwordInput.sendKeys(userDetails.get(0).getPassword());
+//        addUserPage.bioDescriptions.sendKeys(userDetails.get(0).getBio());
+//        addUserPage.submitAddUserBtn.click();
+
+        this.dataTable = dataTable;
+        List<List<String>> userDetails = dataTable.asLists();
+        addUserPage.firstNameInput.sendKeys(userDetails.get(1).get(0));
+        addUserPage.lastNameInput.sendKeys(userDetails.get(1).get(1));
+        addUserPage.emailInput.sendKeys(userDetails.get(1).get(2));
+        addUserPage.usernameInput.sendKeys(userDetails.get(1).get(3));
+        addUserPage.passwordInput.sendKeys(userDetails.get(1).get(4));
+        addUserPage.bioDescriptions.sendKeys(userDetails.get(1).get(5));
         addUserPage.submitAddUserBtn.click();
 //        System.out.println(userDetails.get(3).getFirstname());
 //        for (UserDetails e : userDetails){
 //            System.out.println(e.getFirstname());
 //        }
     }
+
     @Then("admin should successfully create a user")
     public void admin_should_successfully_create_a_user() {
-
-        Assert.assertEquals(addUserPage.userTitle.getText(), "J. Doe7");
+        List<List<String>> userDetails = dataTable.asLists();
+        String username = userDetails.get(1).get(0).charAt(0) + ". " + userDetails.get(1).get(1);
+        Assert.assertEquals(addUserPage.userTitle.getText(), username);
     }
 
 }
