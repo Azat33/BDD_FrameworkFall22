@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>BDD_FrameworkFall22</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+    </properties>
+
+
+
+    <dependencies>
+
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.8.0</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.9.2</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>7.11.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>7.11.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.26</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.21.0</version>
+                <configuration>
+                    <!-- which tests do you want to include in the surefire plugin run in test phase -->
+                    <includes>
+                        <!-- ** means anywhere under project directory -->
+                        <include>**/SmokeRunner.java</include>
+                    </includes>
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <!-- pie chart nice cucumber report -->
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>3.15.0</version>
+                <!-- how should this plugin be executed-->
+                <executions>
+                    <execution>
+                        <id>execution</id>
+                        <!-- which phase this plugin should be executed? -->
+                        <phase>verify</phase><!-- when cucumber.json from runner class is ready -->
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <!-- here give configuration for the report like name, where
+                        the plugin should find cucumber.json and where the final nice report
+                        should be created(generated)? -->
+                        <configuration>
+                            <!-- what ever we put here will appear in the report title -->
+                            <projectName>BBD_FrameworkFal2022 Cucumber(POM File)</projectName>
+                            <!-- where the nice report should be generated in? -->
+                            <!-- from pom file project build directory is target folder -->
+                            <outputDirectory>${project.build.directory}/cucumber-report-pie-chart
+                            </outputDirectory>
+                            <!-- which cucumber junit statistics from runner class should I use? -->
+                            <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

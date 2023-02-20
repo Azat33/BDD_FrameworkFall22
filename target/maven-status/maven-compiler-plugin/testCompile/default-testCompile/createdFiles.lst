@@ -1,0 +1,6 @@
+runner\SmokeRunner.class
+steps\LoginSteps.class
+steps\CucumberParamsSteps.class
+steps\DataTableSteps.class
+steps\Hooks.class
+steps\ScenarioOutlineSteps.class

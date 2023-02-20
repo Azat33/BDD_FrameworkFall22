@@ -1,0 +1,11 @@
+driverManager\ChromeWebDriver.class
+pages\AddUserPage.class
+pages\BasePage.class
+pages\LoginPage.class
+pojo\UserDetails.class
+driverManager\EdgeWebDriver.class
+pages\AdminHomePage.class
+common\ConfigReader.class
+driverManager\FirefoxWebDriver.class
+driverManager\Driver.class
+common\WebElementActions.class
