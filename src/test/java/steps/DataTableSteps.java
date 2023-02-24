@@ -59,7 +59,7 @@ public class DataTableSteps {
 
     @Then("user should land to create new user page")
     public void user_should_land_to_create_new_user_page() {
-        Assert.assertEquals(driver.getCurrentUrl(), "https://nuta1bema.talentlms.com/user/create");
+        Assert.assertEquals(driver.getCurrentUrl(), "https://azat33.talentlms.com/user/create");
 
     }
 

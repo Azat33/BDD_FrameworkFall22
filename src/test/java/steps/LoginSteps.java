@@ -35,7 +35,7 @@ public class LoginSteps {
     }
     @Then("user should login successfully")
     public void user_should_login_successfully() {
-        Assert.assertEquals(driver.getCurrentUrl(), "https://nuta1bema.talentlms.com/dashboard");
+        Assert.assertEquals(driver.getCurrentUrl(), "https://azat33.talentlms.com/dashboard");
     }
 
     @Given("user should enter in username field invalid username")
