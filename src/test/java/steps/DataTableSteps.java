@@ -84,12 +84,12 @@ public class DataTableSteps {
 
         this.dataTable = dataTable;
         List<List<String>> userDetails = dataTable.asLists();
-        addUserPage.firstNameInput.sendKeys(userDetails.get(1).get(0));
-        addUserPage.lastNameInput.sendKeys(userDetails.get(1).get(1));
-        addUserPage.emailInput.sendKeys(userDetails.get(1).get(2));
-        addUserPage.usernameInput.sendKeys(userDetails.get(1).get(3));
-        addUserPage.passwordInput.sendKeys(userDetails.get(1).get(4));
-        addUserPage.bioDescriptions.sendKeys(userDetails.get(1).get(5));
+        addUserPage.firstNameInput.sendKeys(userDetails.get(0).get(0));
+        addUserPage.lastNameInput.sendKeys(userDetails.get(0).get(1));
+        addUserPage.emailInput.sendKeys(userDetails.get(0).get(2));
+        addUserPage.usernameInput.sendKeys(userDetails.get(0).get(3));
+        addUserPage.passwordInput.sendKeys(userDetails.get(0).get(4));
+        addUserPage.bioDescriptions.sendKeys(userDetails.get(0).get(5));
         addUserPage.submitAddUserBtn.click();
 //        System.out.println(userDetails.get(3).getFirstname());
 //        for (UserDetails e : userDetails){
