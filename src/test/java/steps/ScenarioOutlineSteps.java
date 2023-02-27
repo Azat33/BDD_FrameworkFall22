@@ -1,6 +1,7 @@
 package steps;
 
 
+import common.MockDataGenerator;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import pages.LoginPage;
@@ -8,18 +9,22 @@ import pages.LoginPage;
 
 public class ScenarioOutlineSteps {
     LoginPage loginPage = new LoginPage();
+    MockDataGenerator fakers = new MockDataGenerator();
+
+    private String fakeUsername = fakers.generateMockUsername();
+
+    private String fakePassword = fakers.generatePassword(8);
 
 
     @Given("enter in username field {string}")
     public void enter_in_username_field(String username) {
+        username = fakeUsername;
        loginPage.usernameInput.sendKeys(username);
-        System.out.println(username);
     }
     @Given("enter in password field {string}")
     public void enter_in_password_field(String password) {
+        password = fakePassword;
         loginPage.passwordInput.sendKeys(password);
-        System.out.println(password);
-
     }
     @Then("Login not successful")
     public void login_not_successful() {

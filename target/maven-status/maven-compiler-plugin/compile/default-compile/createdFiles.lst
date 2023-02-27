@@ -6,6 +6,7 @@ pojo\UserDetails.class
 driverManager\EdgeWebDriver.class
 pages\AdminHomePage.class
 common\ConfigReader.class
+common\MockDataGenerator.class
 driverManager\FirefoxWebDriver.class
 driverManager\Driver.class
 common\WebElementActions.class

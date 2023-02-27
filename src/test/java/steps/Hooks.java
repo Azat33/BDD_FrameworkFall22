@@ -11,19 +11,19 @@ import org.openqa.selenium.WebDriverException;
 public class Hooks {
 
     @Before
-    public void setUp(){
+    public void setUp() {
         System.out.println("Before hook started:");
     }
 
     @After
-    public void tearDown(Scenario scenario){
-        try {
-            if (scenario.isFailed()){
+    public void tearDown(Scenario scenario) {
+        if (scenario.isFailed()) {
+            try {
                 final byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
                 scenario.attach(screenshot, "image/png", "screenshot");
+            } catch (WebDriverException noSupportScreenshot) {
+                System.err.println(noSupportScreenshot.getMessage());
             }
-        }catch (WebDriverException noSupportScreenshot) {
-            System.err.println(noSupportScreenshot.getMessage());
         }
         Driver.closeDriver();
     }

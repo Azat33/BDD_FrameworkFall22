@@ -10,4 +10,7 @@ public class AdminHomePage extends BasePage{
     @FindBy(xpath = "(//a[contains(text(),'Add user')])[1]")
     public WebElement adminAddUserBtn;
 
+    @FindBy(xpath = "//a[contains(text(),'Gamification')]")
+    public WebElement gamificationLink;
+
 }

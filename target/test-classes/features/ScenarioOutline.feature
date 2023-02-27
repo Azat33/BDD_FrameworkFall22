@@ -11,9 +11,9 @@ Feature: Scenario Outline examples
     When user click Login button
     Then Login not successful
     Examples:
-      | username | password       |
-      | test123  | HGVUJhsa       |
-      | 123test  | DSADsadasd     |
-      | 555Test  | DSADASDEWQDSA  |
-      | 8888Test | EWQEWQDSdsadas |
-      | 0000Test | dsADWQDSAd     |
+      | username      | password      |
+      | fakeUsername1 | fakePassword1 |
+      | fakeUsername2 | fakePassword2 |
+      | fakeUsername3 | fakePassword3 |
+      | fakeUsername4 | fakePassword4 |
+      | fakeUsername5 | fakePassword5 |
