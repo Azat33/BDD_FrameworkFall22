@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
         },
         features = "src/test/resources/features",
         glue = "steps",
-        tags = "@table",
+        tags = "@Outline or @StringParams or @table",
         dryRun = false,
         publish = true
 

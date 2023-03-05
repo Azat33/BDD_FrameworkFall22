@@ -9,7 +9,7 @@ Feature: Parameters in cucumber
     When user click Login button
     Then user should not login and user should see error message
 
-    @int
-    Scenario: Int param
-      Given number  5
-      And float 5.5
+#    @int
+#    Scenario: Int param
+#      Given number  5
+#      And float 5.5
