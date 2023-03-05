@@ -11,7 +11,9 @@ Feature: Data Table functionality
   @table
   Scenario: Verify that admin can create new user in the system
     Given create new user with following data
+
       | randomFirstname | randomLastname | randomEmail | randomUsername | randomPassword | bio |
+
     Then admin should successfully create a user
 
 
